@@ -119,10 +119,15 @@ module.exports = {
         }
     },
 
-    activated: function() {
-        // Sync all state values with motor config every time this page becomes active
-        // This ensures UI shows correct values each time user navigates to this page
+    ready: function() {
+        // Sync all state values with motor config when component is ready
+        // This ensures UI shows correct values when component is first loaded
+        console.log("Motor view ready for motor index");
         this.syncStateToConfig();
+    },
+
+    attached: function() {
+        console.log("Motor view attached for motor index");
     },
 
     watch: {
