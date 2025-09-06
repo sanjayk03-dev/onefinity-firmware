@@ -214,7 +214,7 @@ module.exports = {
         syncStateToConfig: function() {
             // Force sync all state values to motor config
             // This ensures the UI reflects the current state even if changes happened while component was unmounted
-            
+            console.log("Syncing state to motor config for motor index",this.index);
             const motor_axes = ["X", "Y", "Z", "A", "B", "C"];
             
             // Define mapping between state properties and motor config properties
