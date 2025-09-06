@@ -119,9 +119,9 @@ module.exports = {
         }
     },
 
-    attached: function() {
-        // Sync all state values with motor config when component mounts
-        // This ensures UI shows correct values even if rotary was toggled on another page
+    activated: function() {
+        // Sync all state values with motor config every time this page becomes active
+        // This ensures UI shows correct values each time user navigates to this page
         this.syncStateToConfig();
     },
 
