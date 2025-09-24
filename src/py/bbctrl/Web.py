@@ -253,10 +253,10 @@ class ConfigLoadHandler(bbctrl.APIHandler):
     def get(self):
         config = self.get_ctrl().config.load()
         
-        # Check if we're within the first 90 seconds of server boot
+        # Check if we're within the first 30 seconds of server boot
         web_app = self.application
         time_since_boot = time.time() - web_app.server_boot_time
-        config['_server_first_load'] = time_since_boot <= 90.0  # True if within first 90 seconds
+        config['_server_first_load'] = time_since_boot <= 30.0  # True if within first 30 seconds
             
         self.write_json(config)
 
