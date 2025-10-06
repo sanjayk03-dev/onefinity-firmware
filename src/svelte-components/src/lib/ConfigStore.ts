@@ -11,8 +11,8 @@ let easyAdapterTimer: ReturnType<typeof setTimeout> | null = null;
 export function handleConfigUpdate(config: Record<string, any>) {
     Config.set(config);
     
-    // Check if easy-adapter is enabled and show dialog if within first 30 seconds of server boot
-    // The server provides a _server_first_load flag that is true for all requests within first 30 seconds of server startup
+    // Check if easy-adapter is enabled and show dialog if within first 90 seconds of server boot
+    // The server provides a _server_first_load flag that is true for all requests within first 90 seconds of server startup
     if (config.settings && config.settings["easy-adapter"] && config._server_first_load) {
 
         try {
@@ -25,7 +25,7 @@ export function handleConfigUpdate(config: Record<string, any>) {
             // Show EasyAdapter dialog
             showDialog("EasyAdapter", {});
             
-            // Auto-close after 30 seconds
+            // Auto-close after 90 seconds
             easyAdapterTimer = setTimeout(() => {
                 try {
                     EasyAdapterDialogProps.set({ open: false });
@@ -34,7 +34,7 @@ export function handleConfigUpdate(config: Record<string, any>) {
                 } finally {
                     easyAdapterTimer = null;
                 }
-            }, 30000);
+            }, 90000);
         } catch (error) {
             console.error("Failed to show EasyAdapter dialog:", error);
         }
